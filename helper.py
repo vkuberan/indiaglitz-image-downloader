@@ -8,6 +8,9 @@ from requests.packages.urllib3.util.retry import Retry
 from bs4 import BeautifulSoup
 import shutil
 
+# IndiaGlitz Image API End Point
+INDIAGLITZ_IMAGE_API_ENDPOINT = 'https://www.indiaglitz.com/get_gallery_load_all.php?'
+
 # seconds
 DEFAULT_TIMEOUT = 5
 retry_strategy = Retry(
@@ -105,6 +108,21 @@ def get_list_of_url_links(data):
             list_of_urls[text_to_key] = actor_actress['href']
 
     return list_of_urls
+
+
+def get_indiaglitz_image_api_endpoint(data):
+    soup = BeautifulSoup(data, "lxml")
+    qstring = soup.find("input", id="qstring")
+    endpoint_api = ''
+    if qstring:
+        params = qstring['value'].strip().split('&')
+        for param in params:
+            if "cid" in param:
+                endpoint_api = '{}{}&start='.format(
+                    INDIAGLITZ_IMAGE_API_ENDPOINT, param)
+                break
+
+    return endpoint_api
 
 
 def save_image_to_disk(link_source, img_file_name):

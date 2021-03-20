@@ -42,6 +42,12 @@ for key, url_link in food_for_bot.items():
 
         data = fetch_data_from_url(actor_actress_link, file_name)
 
+        img_api_endpoint = get_indiaglitz_image_api_endpoint(data)
+
+        print(img_api_endpoint)
+
+        # input("Press any key to continue...")
+
         iCnt += 1
 
     input("Press any key to continue...")
