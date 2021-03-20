@@ -34,9 +34,14 @@ for key, url_link in food_for_bot.items():
 
     iCnt = 1
 
-    for actor_actress_dir, actor_actress_link in list_of_url_links.items():
+    for actor_actress_slug, actor_actress_link in list_of_url_links.items():
         print('{:>3d} {} {} \n\n'.format(
-            iCnt, actor_actress_dir, actor_actress_link))
+            iCnt, actor_actress_slug, actor_actress_link))
+
+        file_name = dir_name + '/' + actor_actress_slug + '.html'
+
+        data = fetch_data_from_url(actor_actress_link, file_name)
+
         iCnt += 1
 
     input("Press any key to continue...")
