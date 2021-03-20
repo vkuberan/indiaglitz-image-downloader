@@ -5,6 +5,7 @@ bin-release/
 [Bb]in/
 data/
 images/
+__pycache__/
 
 # Other files and folders
 .settings/
@@ -14,11 +15,6 @@ images/
 *.air
 *.ipa
 *.apk
-
-*.jpg
-*.jpeg
-*.png
-*.gif
 
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
