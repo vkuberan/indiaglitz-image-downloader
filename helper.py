@@ -95,13 +95,16 @@ def fetch_data_from_url(link_source, html_file_to_save):
 
 def get_list_of_url_links(data):
     soup = BeautifulSoup(data, "lxml")
+    list_of_urls = {}
     actors_actresses = soup.find('div', class_='movie_gallery_index').find(
         "ul").find_all('a')
 
     for actor_actress in actors_actresses:
-        print(actor_actress)
+        if actor_actress.text:
+            text_to_key = actor_actress.text.lower().replace(' ', '-')
+            list_of_urls[text_to_key] = actor_actress['href']
 
-    return actors_actresses
+    return list_of_urls
 
 
 def save_image_to_disk(link_source, img_file_name):

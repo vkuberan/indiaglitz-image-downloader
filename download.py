@@ -30,4 +30,13 @@ for key, url_link in food_for_bot.items():
 
     list_of_url_links = get_list_of_url_links(data)
 
+    clear_screen()
+
+    iCnt = 1
+
+    for actor_actress_dir, actor_actress_link in list_of_url_links.items():
+        print('{:>3d} {} {} \n\n'.format(
+            iCnt, actor_actress_dir, actor_actress_link))
+        iCnt += 1
+
     input("Press any key to continue...")
