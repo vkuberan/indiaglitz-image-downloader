@@ -23,7 +23,7 @@ for key, url_link in food_for_bot.items():
         key: dir_name
     }
 
-    # create separate directory for every actress
+    # create separate directory for actor and actresses
     create_related_dirs(data_dir)
 
     data = fetch_data_from_url(url_link, file_name)
@@ -35,10 +35,18 @@ for key, url_link in food_for_bot.items():
     iCnt = 1
 
     for actor_actress_slug, actor_actress_link in list_of_url_links.items():
-        print('{:>3d} {} {} \n\n'.format(
+        print('{:<3d} {} {} \n\n'.format(
             iCnt, actor_actress_slug, actor_actress_link))
 
-        file_name = dir_name + '/' + actor_actress_slug + '.html'
+        actor_actress_dir_name = dir_name + '/' + actor_actress_slug
+        file_name = actor_actress_dir_name + '/' + actor_actress_slug + '.html'
+
+        data_dir = {
+            actor_actress_slug: actor_actress_dir_name
+        }
+
+        # create separate directory for every actress
+        create_related_dirs(data_dir)
 
         data = fetch_data_from_url(actor_actress_link, file_name)
 
@@ -50,4 +58,4 @@ for key, url_link in food_for_bot.items():
 
         iCnt += 1
 
-    input("Press any key to continue...")
+    # input("Press any key to continue...")
