@@ -93,6 +93,17 @@ def fetch_data_from_url(link_source, html_file_to_save):
     return html_source
 
 
+def get_list_of_url_links(data):
+    soup = BeautifulSoup(data, "lxml")
+    actors_actresses = soup.find('div', class_='movie_gallery_index').find(
+        "ul").find_all('a')
+
+    for actor_actress in actors_actresses:
+        print(actor_actress)
+
+    return actors_actresses
+
+
 def save_image_to_disk(link_source, img_file_name):
 
     if not os.path.isfile(img_file_name):
