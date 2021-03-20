@@ -2,6 +2,7 @@ import os
 import platform
 import subprocess
 import requests
+import time
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 from bs4 import BeautifulSoup
@@ -108,6 +109,7 @@ def save_image_to_disk(link_source, img_file_name):
             with open(img_file_name, 'wb') as out_file:
                 shutil.copyfileobj(response.raw, out_file)
             del response
+            time.sleep(1)
 
         except Exception as e:
             print("{:>4s} {}".format('', e))

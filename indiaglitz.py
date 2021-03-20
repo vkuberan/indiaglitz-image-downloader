@@ -58,7 +58,6 @@ for dirname, data_url in links.items():
                     imagename = actress_dir + '/' + image['image']
                     print('{:>3d}] {}'.format(iCnt, img_url))
                     save_image_to_disk(img_url, imagename)
-                    time.sleep(1)
                     iCnt += 1
         else:
             load_more = False
