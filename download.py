@@ -34,9 +34,13 @@ for key, url_link in food_for_bot.items():
 
     iCnt = 1
 
+    print(list_of_url_links)
+
+    input("Press any key to continue...")
+
     for actor_actress_slug, actor_actress_link in list_of_url_links.items():
-        print('{:<3d} {} {} \n\n'.format(
-            iCnt, actor_actress_slug, actor_actress_link))
+        print('{}: {} {}'.format(
+            iCnt, '', actor_actress_slug, actor_actress_link))
 
         actor_actress_dir_name = dir_name + '/' + actor_actress_slug
         file_name = actor_actress_dir_name + '/' + actor_actress_slug + '.html'
@@ -52,7 +56,7 @@ for key, url_link in food_for_bot.items():
 
         img_api_endpoint = get_indiaglitz_image_api_endpoint(data)
 
-        print(img_api_endpoint)
+        print('API Endpoint: ' + img_api_endpoint, end="\n\n")
 
         # input("Press any key to continue...")
 
